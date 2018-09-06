@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MvcLoginRegistration.Models;
@@ -9,6 +10,7 @@ namespace MvcLoginRegistration.Controllers
 {
     public class AccountController : Controller
     {
+        OurDbContext db = new OurDbContext();
         // GET: Account
         public ActionResult Index()
         {
@@ -33,6 +35,7 @@ namespace MvcLoginRegistration.Controllers
                 }
                 ModelState.Clear();
                 ViewBag.Message = account.FirstName + " " + account.LastName + "successfully registered.";
+
             }
             return View();
 
@@ -77,7 +80,32 @@ namespace MvcLoginRegistration.Controllers
 
         public ActionResult Student()
         {
+
             return View();
         }
+
+        
+        
+        //public ActionResult Index()
+        //{
+        //    return View(db.UserAccount.ToList());
+        //}
+
+        // GET: studentlistcrud/Details/5
+        public ActionResult Details(int? id)
+        {
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //UserAccount userAccount = db.UserAccount.Find(id);
+            //if (userAccount == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(userAccount);
+            return View();
+        }
+
     }
 }
