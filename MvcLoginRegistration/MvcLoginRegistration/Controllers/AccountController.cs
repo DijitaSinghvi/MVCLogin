@@ -34,10 +34,10 @@ namespace MvcLoginRegistration.Controllers
                     db.SaveChanges();
                 }
                 ModelState.Clear();
-                ViewBag.Message = account.FirstName + " " + account.LastName + "successfully registered.";
+                ViewBag.Message = account.FirstName + " " + account.LastName + " " + account.Email + "" + account.Username + "" + account.Password + "" + account.ConfirmPassword + "" + account.Role + "" + account.UserID + "" + "successfully registered.";
 
             }
-            return View();
+            return View("Login");
 
         }
         //Login
@@ -51,12 +51,35 @@ namespace MvcLoginRegistration.Controllers
         {
             using (OurDbContext db = new OurDbContext())
             {
-                var usr = db.UserAccount.Where(u => u.Username == account.Username && u.Password == account.Password);
+                var usr = db.UserAccount.Where(u => u.Username == account.Username && u.Password == account.Password
+     ).FirstOrDefault();
+                //var usr = db.UserAccount.Where(u => u.Username == account.Username && u.Password == account.Password ).FirstOrDefault();
                 if (usr != null)
                 {
                     Session["UserID"] = account.UserID.ToString();
-                    Session["Username"] =account.Username.ToString();
-                    return RedirectToAction("LoggedIn");
+                    Session["Username"] = account.Username.ToString();
+                    
+
+
+                    //if (account.Role == "Admin")
+                    //    return RedirectToAction("Admin");
+                    //else if (account.Role == "Student")
+                    //    return RedirectToAction("Student");
+                    //else if (account.Role == "Teacher")
+                    //    return RedirectToAction("Teacher");
+
+                    if (account.Role == "Student")
+                    {
+                    return RedirectToAction("Student");
+                    }
+
+
+
+
+                        //Session["UserID"] = account.UserID.ToString();
+                        //Session["Username"] = account.Username.ToString();
+
+                        //return RedirectToAction("LoggedIn");
 
                 }
                 else
@@ -83,29 +106,46 @@ namespace MvcLoginRegistration.Controllers
 
             return View();
         }
+        public ActionResult Teacher()
+        {
+            //using (SchoolDBEntities1 db = new SchoolDBEntities1())
+            //{
+            //    return View(db.Users.ToList());
+            //}
+            return View();
+        }
+        public ActionResult Admin()
+        {
+            //using (SchoolDBEntities1 db = new SchoolDBEntities1())
+            //{
+            //    return View(db.Users.ToList());
+            //}
+            return View();
 
-        
-        
+        }
+
+
         //public ActionResult Index()
         //{
         //    return View(db.UserAccount.ToList());
         //}
 
         // GET: studentlistcrud/Details/5
-        public ActionResult Details(int? id)
-        {
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //UserAccount userAccount = db.UserAccount.Find(id);
-            //if (userAccount == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(userAccount);
-            return View();
-        }
+        //public ActionResult Details(int? id)
+        //{
+        //    //if (id == null)
+        //    //{
+        //    //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    //}
+        //    //UserAccount userAccount = db.UserAccount.Find(id);
+        //    //if (userAccount == null)
+        //    //{
+        //    //    return HttpNotFound();
+        //    //}
+        //    //return View(userAccount);
+        //    return View();
+        //}
+
 
     }
 }

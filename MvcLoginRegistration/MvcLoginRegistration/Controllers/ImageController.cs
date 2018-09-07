@@ -34,11 +34,22 @@ namespace MvcLoginRegistration.Controllers
                 db.SaveChanges();
             }
             ModelState.Clear();
-            return RedirectToAction("View");
-            //return View();
+            //return RedirectToAction("View");
+            return View();
         }
 
+       // [HttpGet]
+        //public ActionResult View(int id)
+        //{
+        //    Image obj = new Image();
+        //    using (DbRegisterEntities db = new DbRegisterEntities())
+        //    {
+        //        obj = db.Images.Where(x => x.ImageId == id).FirstOrDefault();
+        //    }
+        //    return View(obj);
+        //}
         [HttpGet]
+        
         public ActionResult View(int id)
         {
             Image obj = new Image();
