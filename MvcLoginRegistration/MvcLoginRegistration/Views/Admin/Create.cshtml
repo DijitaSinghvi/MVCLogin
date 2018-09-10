@@ -1,15 +1,10 @@
 ﻿@model MvcLoginRegistration.Models.UserAccount
 
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Create";
 }
 
-<h2>Register</h2>
-
-<div>
-    @Html.ActionLink("Login", "Login")
-</div>
-
+<h2>Create</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -77,7 +72,6 @@
                new SelectListItem{Text="Admin",Value="Admin"}
 
               },"Select Role")
-
     </div>
     <div class="form-group">
         @Html.Label("Choose your course", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -92,6 +86,8 @@
 
     </div>
 
+
+
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-default" />
@@ -100,11 +96,6 @@
 </div>
 }
 
-@*<div>
+<div>
     @Html.ActionLink("Back to List", "Index")
-</div>*@
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+</div>

@@ -26,7 +26,7 @@ namespace MvcLoginRegistration.Controllers
         [HttpPost]
         public ActionResult Register(UserAccount account)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 using (OurDbContext db = new OurDbContext())
                 {
@@ -44,42 +44,30 @@ namespace MvcLoginRegistration.Controllers
         public ActionResult Login()
         {
             return View();
-        
+
         }
+
         [HttpPost]
         public ActionResult Login(UserAccount account)
         {
             using (OurDbContext db = new OurDbContext())
             {
-                var usr = db.UserAccount.Where(u => u.Username == account.Username && u.Password == account.Password
-     ).FirstOrDefault();
-                //var usr = db.UserAccount.Where(u => u.Username == account.Username && u.Password == account.Password ).FirstOrDefault();
-                if (usr != null)
+                var user = db.UserAccount.Where(u => u.Username == account.Username && u.Password == account.Password).FirstOrDefault();
+
+                if (user != null)
                 {
-                    Session["UserID"] = account.UserID.ToString();
-                    Session["Username"] = account.Username.ToString();
-                    
 
+                    if (user.Role == "Admin")
+                        return RedirectToAction("Index", "Admin");
+                    else if (user.Role == "Student")
+                        return RedirectToAction("Profile","Student");
+                    else if (user.Role == "Teacher")
+                        return RedirectToAction("Teacher");
 
-                    //if (account.Role == "Admin")
-                    //    return RedirectToAction("Admin");
-                    //else if (account.Role == "Student")
-                    //    return RedirectToAction("Student");
-                    //else if (account.Role == "Teacher")
-                    //    return RedirectToAction("Teacher");
+                    //Session["UserID"] = account.UserID.ToString();
+                    //Session["Username"] = account.Username.ToString();
 
-                    if (account.Role == "Student")
-                    {
-                    return RedirectToAction("Student");
-                    }
-
-
-
-
-                        //Session["UserID"] = account.UserID.ToString();
-                        //Session["Username"] = account.Username.ToString();
-
-                        //return RedirectToAction("LoggedIn");
+                    //return RedirectToAction("LoggedIn");
 
                 }
                 else
@@ -91,7 +79,7 @@ namespace MvcLoginRegistration.Controllers
         }
         public ActionResult LoggedIn()
         {
-            if (Session["UserID"]!=null)
+            if (Session["UserID"] != null)
             {
                 return View();
             }
@@ -101,50 +89,21 @@ namespace MvcLoginRegistration.Controllers
             }
         }
 
-        public ActionResult Student()
-        {
+        //public ActionResult Student()
+        //{
 
-            return View();
-        }
+        //    return View();
+
+        //}
         public ActionResult Teacher()
         {
-            //using (SchoolDBEntities1 db = new SchoolDBEntities1())
-            //{
-            //    return View(db.Users.ToList());
-            //}
-            return View();
-        }
-        public ActionResult Admin()
-        {
-            //using (SchoolDBEntities1 db = new SchoolDBEntities1())
-            //{
-            //    return View(db.Users.ToList());
-            //}
-            return View();
+            using (OurDbContext db = new OurDbContext())
+            {
+                var returnedResult = db.UserAccount.Where(x => x.Role == "Student").ToList();
+                return View(returnedResult);
+            }
 
         }
-
-
-        //public ActionResult Index()
-        //{
-        //    return View(db.UserAccount.ToList());
-        //}
-
-        // GET: studentlistcrud/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    //if (id == null)
-        //    //{
-        //    //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    //}
-        //    //UserAccount userAccount = db.UserAccount.Find(id);
-        //    //if (userAccount == null)
-        //    //{
-        //    //    return HttpNotFound();
-        //    //}
-        //    //return View(userAccount);
-        //    return View();
-        //}
 
 
     }

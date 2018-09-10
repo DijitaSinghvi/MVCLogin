@@ -11,7 +11,7 @@ namespace MvcLoginRegistration.Models
     {
         [Key]
         public int UserID { get; set; }
-        [Required(ErrorMessage = "First name is required.")]
+        
         public string FirstName { get; set; }
         [Required(ErrorMessage = "Last name is required.")]
         public string LastName { get; set; }
@@ -27,6 +27,9 @@ ErrorMessage = "Please enter correct email address")]
     [DataType(DataType.Password)]
     public string ConfirmPassword { get; set; }
         public string Role { get; set; }
+        public string Course { get; set; }
+
 
     }
+    
 }

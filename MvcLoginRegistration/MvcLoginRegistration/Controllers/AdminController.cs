@@ -10,7 +10,7 @@ using MvcLoginRegistration.Models;
 
 namespace MvcLoginRegistration.Controllers
 {
-    public class studentlistcrudController : Controller
+    public class AdminController : Controller
     {
         private OurDbContext db = new OurDbContext();
 
@@ -78,7 +78,7 @@ namespace MvcLoginRegistration.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserID,FirstName,LastName,Email,Username,Password,ConfirmPassword,Role")] UserAccount userAccount)
+        public ActionResult Edit([Bind(Include = "UserID,FirstName,LastName,Email,Username,Password,ConfirmPassword,Role,Course")] UserAccount userAccount)
         {
             if (ModelState.IsValid)
             {

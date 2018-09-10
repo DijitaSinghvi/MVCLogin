@@ -161,7 +161,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
-    <Compile Include="Controllers\studentlistcrudController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -176,6 +177,14 @@
     <Compile Include="Migrations\201809060618591_newfile.cs" />
     <Compile Include="Migrations\201809060618591_newfile.Designer.cs">
       <DependentUpon>201809060618591_newfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809100856126_MyCourse.cs" />
+    <Compile Include="Migrations\201809100856126_MyCourse.Designer.cs">
+      <DependentUpon>201809100856126_MyCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809101016354_RemovedUserIDFromUserAccountClass.cs" />
+    <Compile Include="Migrations\201809101016354_RemovedUserIDFromUserAccountClass.Designer.cs">
+      <DependentUpon>201809101016354_RemovedUserIDFromUserAccountClass.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Image.cs">
@@ -265,14 +274,19 @@
     <Content Include="Views\Account\Student.cshtml" />
     <Content Include="Views\Image\Add.cshtml" />
     <Content Include="Views\Image\View.cshtml" />
-    <Content Include="Views\studentlistcrud\Create.cshtml" />
-    <Content Include="Views\studentlistcrud\Delete.cshtml" />
-    <Content Include="Views\studentlistcrud\Details.cshtml" />
-    <Content Include="Views\studentlistcrud\Edit.cshtml" />
-    <Content Include="Views\studentlistcrud\Index.cshtml" />
-    <Content Include="Views\Account\Details.cshtml" />
-    <Content Include="Views\Account\Admin.cshtml" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Delete.cshtml" />
+    <Content Include="Views\Admin\Details.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Account\Teacher.cshtml" />
+    <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\Student\Delete.cshtml" />
+    <Content Include="Views\Student\Details.cshtml" />
+    <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\FirstView.cshtml" />
+    <Content Include="Views\Student\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -300,6 +314,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809060618591_newfile.resx">
       <DependentUpon>201809060618591_newfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809100856126_MyCourse.resx">
+      <DependentUpon>201809100856126_MyCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809101016354_RemovedUserIDFromUserAccountClass.resx">
+      <DependentUpon>201809101016354_RemovedUserIDFromUserAccountClass.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
