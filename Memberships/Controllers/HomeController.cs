@@ -10,6 +10,7 @@ namespace Memberships.Controllers
     {
         public ActionResult Index()
         {
+            // comment for change on github.
             return View();
         }
 
