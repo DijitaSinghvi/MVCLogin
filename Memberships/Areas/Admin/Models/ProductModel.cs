@@ -22,7 +22,9 @@ namespace Memberships.Areas.Admin.Models
         public string ImageUrl { get; set; }
         public int ProductTypeId { get; set; }
         public int ProductLinkTextId { get; set; }
+        [DisplayName("Product Type")]
         public ICollection<ProductType> ProductTypes { get; set; }
+        [DisplayName("Product Link Text")]
         public ICollection<ProductLinkText> ProductLinkTexts { get; set; }
         public string  ProductType
         {
